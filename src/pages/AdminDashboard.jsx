@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { apiClient } from '../lib/apiClient'
 import { useToast } from '../components/Toast.jsx'
-import { Users, Store, Star } from 'lucide-react'
 
 function AdminDashboard() {
   const [stats, setStats] = useState({ users: 0, stores: 0, ratings: 0 })
@@ -32,20 +31,23 @@ function AdminDashboard() {
     {
       label: 'Total Users',
       value: stats.users,
-      icon: Users,
-      color: 'bg-blue-500',
+      icon: '/TotalUser-icon.png',
+      color: 'bg-blue-50',
+      borderColor: 'border-blue-200',
     },
     {
       label: 'Total Stores',
       value: stats.stores,
-      icon: Store,
-      color: 'bg-green-500',
+      icon: '/TotalStore-icon.png',
+      color: 'bg-green-50',
+      borderColor: 'border-green-200',
     },
     {
       label: 'Total Ratings',
       value: stats.ratings,
-      icon: Star,
-      color: 'bg-yellow-500',
+      icon: '/FiveStarRating-icon.png',
+      color: 'bg-yellow-50',
+      borderColor: 'border-yellow-200',
     },
   ]
 
@@ -75,22 +77,26 @@ function AdminDashboard() {
 
       {!loading && !error && (
         <div className="grid gap-4 sm:grid-cols-3">
-          {statCards.map((card) => {
-            const Icon = card.icon
-            return (
-              <div key={card.label} className="rounded-lg border bg-white p-6 shadow-sm transition hover:shadow-md">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-slate-600">{card.label}</p>
-                    <p className="mt-2 text-3xl font-bold text-slate-900">{card.value.toLocaleString()}</p>
-                  </div>
-                  <div className={`rounded-full ${card.color} p-3`}>
-                    <Icon className="h-6 w-6 text-white" />
-                  </div>
+          {statCards.map((card) => (
+            <div 
+              key={card.label} 
+              className={`rounded-lg border-2 ${card.borderColor} ${card.color} p-6 shadow-sm transition hover:shadow-md`}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-slate-600">{card.label}</p>
+                  <p className="mt-2 text-3xl font-bold text-slate-900">{card.value.toLocaleString()}</p>
+                </div>
+                <div className="ml-4">
+                  <img 
+                    src={card.icon} 
+                    alt={card.label}
+                    className="h-16 w-16 object-contain"
+                  />
                 </div>
               </div>
-            )
-          })}
+            </div>
+          ))}
         </div>
       )}
     </section>

@@ -106,9 +106,16 @@ function AdminStores() {
   return (
     <section className="space-y-4">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold text-slate-900">All Stores</h1>
-          <p className="text-sm text-slate-600">Manage and view all stores</p>
+        <div className="flex items-center gap-3">
+          <img 
+            src="/SearchStore-icon.png" 
+            alt="Stores" 
+            className="h-10 w-10 object-contain"
+          />
+          <div>
+            <h1 className="text-2xl font-semibold text-slate-900">All Stores</h1>
+            <p className="text-sm text-slate-600">Manage and view all stores</p>
+          </div>
         </div>
         <Link
           to="/app/admin/stores/create"

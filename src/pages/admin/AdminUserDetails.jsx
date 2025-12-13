@@ -76,7 +76,14 @@ function AdminUserDetails() {
 
       <div className="rounded-lg border bg-white p-6 shadow-sm">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-semibold text-slate-900">User Details</h1>
+          <div className="flex items-center gap-3">
+            <img 
+              src={user.role === 'ADMIN' ? '/adminCharacter.png' : user.role === 'OWNER' ? '/SmallBusinessStoreOwner_standing.png' : '/YoungPersonStanding.png'} 
+              alt={user.role}
+              className="h-12 w-12 rounded-full object-cover"
+            />
+            <h1 className="text-2xl font-semibold text-slate-900">User Details</h1>
+          </div>
           <span className={`rounded-full px-3 py-1 text-sm font-semibold ${getRoleBadgeColor(user.role)}`}>
             {user.role}
           </span>

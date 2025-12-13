@@ -125,8 +125,14 @@ function OwnerDashboard() {
           {/* Raters Table */}
           <div className="px-6 py-4">
             {!store.raters || store.raters.length === 0 ? (
-              <div className="py-8 text-center text-sm text-slate-500">
-                No ratings yet. Users haven't rated this store.
+              <div className="py-12 text-center">
+                <img 
+                  src="/NoRatings-icon.png" 
+                  alt="No ratings" 
+                  className="mx-auto mb-4 h-32 w-32 object-contain"
+                />
+                <p className="text-sm font-medium text-slate-700">No ratings yet</p>
+                <p className="mt-1 text-xs text-slate-500">Users haven't rated this store.</p>
               </div>
             ) : (
               <>

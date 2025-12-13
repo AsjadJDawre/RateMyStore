@@ -65,9 +65,16 @@ function CreateStore() {
 
   return (
     <section className="space-y-4">
-      <div>
-        <h1 className="text-2xl font-semibold text-slate-900">Create Store</h1>
-        <p className="text-sm text-slate-600">Add a new store to the platform</p>
+      <div className="flex items-center gap-3">
+        <img 
+          src="/SearchStore-icon.png" 
+          alt="Create Store" 
+          className="h-10 w-10 object-contain"
+        />
+        <div>
+          <h1 className="text-2xl font-semibold text-slate-900">Create Store</h1>
+          <p className="text-sm text-slate-600">Add a new store to the platform</p>
+        </div>
       </div>
 
       <div className="rounded-lg border bg-white p-6 shadow-sm">

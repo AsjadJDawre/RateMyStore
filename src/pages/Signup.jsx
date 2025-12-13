@@ -22,7 +22,7 @@ const signupSchema = z.object({
 
 function Signup() {
   const navigate = useNavigate()
-  const { signup } = useAuth()
+  const { signup, login } = useAuth()
   const { show } = useToast()
   const {
     register,
@@ -37,9 +37,15 @@ function Signup() {
 
   const onSubmit = async (values) => {
     try {
-      await signup(values)
-      show('Account created. Please sign in.', 'success')
-      navigate('/app/stores', { replace: true })
+      const userData = await signup(values)
+      show('Account created successfully!', 'success')
+      // Redirect based on role (signup always creates USER, but handle all cases)
+      const dest = userData?.role === 'ADMIN' 
+        ? '/app/admin/dashboard'
+        : userData?.role === 'OWNER'
+          ? '/app/owner/dashboard'
+          : '/app/stores'
+      navigate(dest, { replace: true })
     } catch (err) {
       console.error(err)
       show(err?.response?.data?.error || 'Signup failed', 'error')
