@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const restoreSession = async () => {
       try {
-        const { data } = await apiClient.post('/api/auth/me')
+        const { data } = await apiClient.get('/api/auth/me')
         if (data && data.id) {
           setUser(data)
           localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
